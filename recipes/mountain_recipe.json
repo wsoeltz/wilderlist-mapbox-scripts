@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "layers": {
+    "mountains": {
+      "source": "mapbox://tileset-source/wsoeltz/mountains-usa-v1",
+      "minzoom": 5,
+      "maxzoom": 10
+    }
+  }
+}

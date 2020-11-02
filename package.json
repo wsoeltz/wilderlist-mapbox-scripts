@@ -1,0 +1,28 @@
+{
+  "name": "wilderlist-mapbox-scripts",
+  "version": "1.0.0",
+  "description": "Scripts for generating and publishing tilesets to Mapbox for Wilderlist",
+  "main": "index.js",
+  "scripts": {
+    "install_python_dependecies": "pip3 install mapbox-tilesets",
+    "setup_python_env_variables": "set -a && source .env && set +a",
+    "init_tileset_cli": "npm run install_python_dependecies && npm run setup_python_env_variables",
+    "build:mountains": "node create_source_mountain_data.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wsoeltz/wilderlist-mapbox-scripts.git"
+  },
+  "author": "Kyle Soeltz (wsoeltz)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wsoeltz/wilderlist-mapbox-scripts/issues"
+  },
+  "homepage": "https://github.com/wsoeltz/wilderlist-mapbox-scripts#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "fs-ndjson": "^1.1.0",
+    "mongoose": "^5.10.11"
+  }
+}
