@@ -53,7 +53,7 @@ Use the following scripts to publish a new tilest.
   ```
 1. Update recipe:\
   ```bash
-  tilesets update-recipe <TILESET_ID> <PATH_TO_RECIPE>
+  tilesets update-recipe <USERNAME>.<TILESET_NAME> <PATH_TO_RECIPE>
   ```
 1. Publish the tileset:\
   ```bash

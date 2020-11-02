@@ -7,14 +7,14 @@ if (process.env.MONGO_URI === undefined) {
 if (process.env.MONGO_AUTH_SOURCE === undefined) {
   throw new Error('You must provide a MongoDB authSource');
 }
-if (process.env.MONGO_DATABASE_NAME === undefined) {
+if (process.env.MONGO_DATABASE_NAME_PROD === undefined) {
   throw new Error('You must provide a dbName');
 }
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_URI, {
   authSource: process.env.MONGO_AUTH_SOURCE,
-  dbName: process.env.MONGO_DATABASE_NAME,
+  dbName: process.env.MONGO_DATABASE_NAME_PROD,
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,

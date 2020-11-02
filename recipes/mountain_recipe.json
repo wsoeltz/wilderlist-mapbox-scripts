@@ -4,7 +4,19 @@
     "mountains": {
       "source": "mapbox://tileset-source/wsoeltz/mountains-usa-v1",
       "minzoom": 5,
-      "maxzoom": 10
+      "maxzoom": 10,
+      "features": {
+        "filter": [">=",
+          ["zoom"],
+          ["match",
+            ["get", "rank"],
+            1, 5,
+            2, 5.75,
+            3, 6.75,
+            4, 7.75, 9
+          ]
+        ]
+      }
     }
   }
 }
