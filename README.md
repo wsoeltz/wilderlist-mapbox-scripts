@@ -28,34 +28,34 @@ Recipes can be edited for each dataset within the `/recipes` directory.
 
 Use the following scripts to publish a new tilest.
 
-1. Validate a generated dataset wtih:\
-  ```bash
-  tilesets validate-source <PATH_TO_FILE>
-  ```
-1. Add the tileset source:\
-  ```bash
-  tilesets upload-source <USERNAME> <TILESET_ID> <PATH_TO_FILE>
-  ```
-1. Create the tileset:\
-  ```bash
-  tilesets create <USERNAME>.<TILESET_NAME> -r <PATH_TO_RECIPE> -n <NAME_OF_TILESET>
-  ```
-1. Publish the tileset:\
-  ```bash
-  tilesets publish <USERNAME>.<TILESET_NAME>
-  ```
+1. Validate a generated dataset with:
+    ```bash
+    tilesets validate-source <PATH_TO_FILE>
+    ```
+1. Add the tileset source:
+    ```bash
+    tilesets upload-source <USERNAME> <TILESET_ID> <PATH_TO_FILE>
+    ```
+1. Create the tileset:
+    ```bash
+    tilesets create <USERNAME>.<TILESET_NAME> -r <PATH_TO_RECIPE> -n <NAME_OF_TILESET>
+    ```
+1. Publish the tileset:
+    ```bash
+    tilesets publish <USERNAME>.<TILESET_NAME>
+    ```
 
 ### Updating a tileset
 
-1. Replace the data in the tileset:\
-  ```bash
-  tilesets upload-source --replace <USERNAME> <TILESET_ID> <PATH_TO_FILE>
-  ```
-1. Update recipe:\
-  ```bash
-  tilesets update-recipe <TILESET_ID> <PATH_TO_RECIPE>
-  ```
-1. Publish the tileset:\
-  ```bash
-  tilesets publish <USERNAME>.<TILESET_NAME>
-  ```
+1. Replace the data in the tileset:
+    ```bash
+    tilesets upload-source --replace <USERNAME> <TILESET_ID> <PATH_TO_FILE>
+    ```
+1. Update recipe:
+    ```bash
+    tilesets update-recipe <TILESET_ID> <PATH_TO_RECIPE>
+    ```
+1. Publish the tileset:
+    ```bash
+    tilesets publish <USERNAME>.<TILESET_NAME>
+    ```
