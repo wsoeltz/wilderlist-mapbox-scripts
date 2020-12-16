@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "layers": {
+    "mountains": {
+      "source": "mapbox://tileset-source/wsoeltz/mountains-usa-v1",
+      "minzoom": 3,
+      "maxzoom": 10,
+      "features": {
+        "filter": [">=",
+          ["zoom"],
+          ["match",
+            ["get", "rank"],
+            1, 4,
+            2, 5.75,
+            3, 6.8,
+            4, 7.8, 9
+          ]
+        ]
+      }
+    },
+    "campsites": {
+      "source": "mapbox://tileset-source/wsoeltz/campsites-usa-v1",
+      "minzoom": 5,
+      "maxzoom": 10,
+      "features": {
+        "filter": [">=",
+          ["zoom"],
+          ["match",
+            ["get", "rank"],
+            1, 6,
+            2, 7,
+            3, 7.5,
+            4, 8, 8.5
+          ]
+        ]
+      }
+    }
+  }
+}

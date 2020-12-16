@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "layers": {
+    "trails": {
+      "source": "mapbox://tileset-source/wsoeltz/trails-usa-v1",
+      "minzoom": 4,
+      "maxzoom": 10,
+      "features": {
+        "filter": [">=",
+          ["zoom"],
+          ["match",
+            ["get", "rank"],
+            1, 5,
+            2, 7,
+            3, 8, 10
+          ]
+        ]
+      }
+    },
+    "roads": {
+      "source": "mapbox://tileset-source/wsoeltz/trail-roads-usa-v1",
+      "minzoom": 9,
+      "maxzoom": 10,
+      "features": {
+        "filter": [">=",
+          ["zoom"],
+          ["match",
+            ["get", "rank"],
+            4, 10,
+            5, 11, 12
+          ]
+        ]
+      }
+    }
+  }
+}

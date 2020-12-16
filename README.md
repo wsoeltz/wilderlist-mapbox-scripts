@@ -16,9 +16,18 @@
 
 ### Generating datasets
 
-Run the script `npm run build:<SOURCE_TYPE>` where `<SOURCE_TYPE>` should be replaced with one of the following values:
+Run the scripts found in the `buildJson` directory to build standard GeoJson files.
 
-- `mountains`
+Use the [MTS Data Sync CLI](https://github.com/mapbox/mts-data-sync) to create line-delimited GeoJson files for each one. 
+
+MTS Data Sync can also be used to estimate processing costs.
+
+##### Special notes for building trail datasets
+
+1. Trail data should first be exported from the database with the query `{relId: {$exists: false}}`
+1. They should then be read in locally using the script `buildJson/trailsStream.js`
+1. They individual output folders can be merged into three seperate files using `buildJson/trailsStream.js`. This creates a file for trails, roads, and unnamed dirt roads.
+1. Roads and unnamed dirt roads can then be manually merged together by opening both in a text editor and copying the contents of roads into unnamed dirt roads.
 
 ### Editing recipes
 
@@ -28,6 +37,10 @@ Recipes can be edited for each dataset within the `/recipes` directory.
 
 Use the following scripts to publish a new tilest.
 
+1. Add `MAPBOX_ACCESS_TOKEN` to environment:
+    ```bash
+    export MAPBOX_ACCESS_TOKEN=XXXX
+    ```
 1. Validate a generated dataset with:
     ```bash
     tilesets validate-source <PATH_TO_FILE>
@@ -35,14 +48,20 @@ Use the following scripts to publish a new tilest.
 1. Add the tileset source:
     ```bash
     tilesets upload-source <USERNAME> <TILESET_ID> <PATH_TO_FILE>
+    # example:
+    # tilesets upload-source wsoeltz campsites-usa-v1 campsites.jsonl
     ```
 1. Create the tileset:
     ```bash
     tilesets create <USERNAME>.<TILESET_NAME> -r <PATH_TO_RECIPE> -n <NAME_OF_TILESET>
+    # example:
+    # tilesets create wsoeltz.wilderlist-layers-v1 -r recipes/wilderlist_layers_recipe.json -n "Wilderlist Layers v1"
     ```
 1. Publish the tileset:
     ```bash
     tilesets publish <USERNAME>.<TILESET_NAME>
+    # example:
+    # tilesets publish wsoeltz.wilderlist-layers-v1
     ```
 
 ### Updating a tileset
@@ -50,6 +69,8 @@ Use the following scripts to publish a new tilest.
 1. Replace the data in the tileset:
     ```bash
     tilesets upload-source --replace <USERNAME> <TILESET_ID> <PATH_TO_FILE>
+    # example:
+    # tilesets upload-source --replace wsoeltz mountains-usa-v1 mountains.jsonl
     ```
 1. Update recipe:
     ```bash

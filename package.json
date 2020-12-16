@@ -21,9 +21,12 @@
   },
   "homepage": "https://github.com/wsoeltz/wilderlist-mapbox-scripts#readme",
   "dependencies": {
+    "@mapbox/geojson-merge": "^1.1.1",
+    "@turf/turf": "^5.1.6",
     "dotenv": "^8.2.0",
     "fs-ndjson": "^1.1.0",
     "lodash": "^4.17.20",
-    "mongoose": "^5.10.11"
+    "mongoose": "^5.10.11",
+    "stream-json": "^1.7.1"
   }
 }
