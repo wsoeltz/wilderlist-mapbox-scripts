@@ -14,21 +14,45 @@
             2, 7,
             3, 8, 10
           ]
+        ],
+        "simplification": [ "case",
+          [ "==", [ "zoom" ], 10 ], 0,
+          4
+        ]
+      },
+      "tiles": {
+        "union": [
+          {
+            "group_by": [ "name" ],
+            "maintain_direction": false
+          }
         ]
       }
     },
     "roads": {
       "source": "mapbox://tileset-source/wsoeltz/trail-roads-usa-v1",
-      "minzoom": 9,
+      "minzoom": 4,
       "maxzoom": 10,
       "features": {
         "filter": [">=",
           ["zoom"],
           ["match",
             ["get", "rank"],
-            4, 10,
-            5, 11, 12
+            4, 8,
+            5, 9, 10
           ]
+        ],
+        "simplification": [ "case",
+          [ "==", [ "zoom" ], 10 ], 0,
+          4
+        ]
+      },
+      "tiles": {
+        "union": [
+          {
+            "group_by": [ "name" ],
+            "maintain_direction": false
+          }
         ]
       }
     }

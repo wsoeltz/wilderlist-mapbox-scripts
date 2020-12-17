@@ -71,12 +71,19 @@ Use the following scripts to publish a new tilest.
     tilesets upload-source --replace <USERNAME> <TILESET_ID> <PATH_TO_FILE>
     # example:
     # tilesets upload-source --replace wsoeltz mountains-usa-v1 mountains.jsonl
+    # tilesets upload-source --replace wsoeltz campsites-usa-v1 campsites.jsonl
+    # tilesets upload-source --replace wsoeltz trails-usa-v1 trails.jsonl
+    # tilesets upload-source --replace wsoeltz trail-roads-usa-v1 unnamed-dirtroads.jsonl
     ```
 1. Update recipe:
     ```bash
     tilesets update-recipe <USERNAME>.<TILESET_NAME> <PATH_TO_RECIPE>
+    # tilesets update-recipe wsoeltz.wilderlist-points-v1 recipes/wilderlist_points_recipe.json
+    # tilesets update-recipe wsoeltz.wilderlist-trails-v1 recipes/wilderlist_trails_recipe.json
     ```
 1. Publish the tileset:
     ```bash
     tilesets publish <USERNAME>.<TILESET_NAME>
+    # tilesets publish wsoeltz.wilderlist-points-v1
+    # tilesets publish wsoeltz.wilderlist-trails-v1
     ```

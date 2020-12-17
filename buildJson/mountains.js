@@ -54,7 +54,7 @@ const main = async () => {
         } else {
           rank = 5;
         }
-        const mountainPoint = {...point(mtn.location, {name: mtn.name, rank, ele: mtn.elevation, id: mtn._id}), id: mtn._id};
+        const mountainPoint = {...point(mtn.location, {name: mtn.name !== undefined ? mtn.name : '', rank, ele: mtn.elevation, id: mtn._id}), id: mtn._id};
         data.push(mountainPoint);
         if (rank === 1) {
           ranked[0].push(mountainPoint);

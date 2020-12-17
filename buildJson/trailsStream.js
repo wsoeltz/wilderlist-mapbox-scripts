@@ -49,11 +49,7 @@ jsonStream.on('data', (res) => {
         rank = 5;
       }
       if (trail.line && trail.line.length && trail.type) {
-        const properties = {type: trail.type, rank, id};
-        if (trail.name !== undefined) {
-          properties.name = trail.name;
-        }
-        const trailPoint = {...lineString(trail.line, properties), id};
+        const trailPoint = {...lineString(trail.line, {type: trail.type, rank, name: trail.name !== undefined ? trail.name : '', id}), id};
         if (geojsonData[rank - 1][trail.type] === undefined) {
           geojsonData[rank - 1][trail.type] = [];
         }

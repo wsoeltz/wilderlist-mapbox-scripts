@@ -43,7 +43,7 @@ const main = async () => {
       } else {
         rank = 5;
       }
-      const campsitePoint = {...point(site.location, {name: site.name, type: site.type, rank, id: site._id}), id: site._id};
+      const campsitePoint = {...point(site.location, {name: site.name !== undefined ? site.name : '', type: site.type, rank, id: site._id}), id: site._id};
       data.push(campsitePoint);
       if (rank === 1) {
         ranked[0].push(campsitePoint);
