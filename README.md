@@ -26,8 +26,9 @@ MTS Data Sync can also be used to estimate processing costs.
 
 1. Trail data should first be exported from the database with the query `{relId: {$exists: false}}`
 1. They should then be read in locally using the script `buildJson/trailsStream.js`
-1. They individual output folders can be merged into three seperate files using `buildJson/trailsStream.js`. This creates a file for trails, roads, and unnamed dirt roads.
+1. They individual output folders can be merged into three seperate files using `buildJson/mergeTrails.js`. This creates a file for trails, roads, and unnamed dirt roads.
 1. Roads and unnamed dirt roads can then be manually merged together by opening both in a text editor and copying the contents of roads into unnamed dirt roads.
+1. Trail data may require additional manual mergeing (via copy and paste). See note in `mergeTrails.js`
 
 ### Editing recipes
 

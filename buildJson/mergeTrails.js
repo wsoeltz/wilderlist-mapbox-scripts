@@ -9,14 +9,24 @@ console.log('Getting files...');
 
 const files = fs.readdirSync(input_folder);
 
-const trail_files = files.filter(file => !file.includes('road'));
+// With additional data, some files must be manually appended the same way roads
+// are manually combined. Expect the list of manual adjustments to grow as the
+// data grows
+// merged, trail-1, trail-2 and path-3 need to be manually added to trail-3 via
+// copy & paste and saved as a new file
+const trail_files = files.filter(file => !file.includes('road') && !file.includes('trail') && !file.includes('path-3'));
 const dirtroad_files = files.filter(file => file.includes('dirtroad-5'));
 const road_files = files.filter(file => file.includes('road') && !file.includes('dirtroad-5'));
 
 let merged_trails = '';
 trail_files.forEach((file, i) => {
   console.log('Read ' + file)
-  merged_trails = merged_trails + fs.readFileSync(input_folder + file);
+  try {
+    merged_trails = merged_trails + fs.readFileSync(input_folder + file);
+  } catch (e) {
+    console.log(e);
+    console.log('Error found with ' + file);
+  }
 });
 
 console.log('Writing trails to file...')

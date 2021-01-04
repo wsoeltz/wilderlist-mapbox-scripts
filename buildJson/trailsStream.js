@@ -48,8 +48,23 @@ jsonStream.on('data', (res) => {
       } else {
         rank = 5;
       }
+      let name;
+      let merge_id;
+      if (trail.name) {
+        name = trail.name;
+        merge_id = 'merge_allowed';
+      } else {
+        name = '';
+        merge_id = id;
+      }
       if (trail.line && trail.line.length && trail.type) {
-        const trailPoint = {...lineString(trail.line, {type: trail.type, rank, name: trail.name !== undefined ? trail.name : '', id}), id};
+        const trailPoint = {...lineString(trail.line, {
+          type: trail.type,
+          rank,
+          name,
+          merge_id,
+          id,
+        }), id};
         if (geojsonData[rank - 1][trail.type] === undefined) {
           geojsonData[rank - 1][trail.type] = [];
         }
