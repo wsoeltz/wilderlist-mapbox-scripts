@@ -30,6 +30,7 @@ const main = async () => {
       [],
       [],
       [],
+      [],
     ]
     await asyncForEach(states, async state => {
       console.log('Fetching mountains for ' + state.name);
@@ -39,22 +40,33 @@ const main = async () => {
       const mountainsSortedByElevation = _.orderBy(mountains, ['elevation'], ['desc']);
       mountainsSortedByElevation.forEach((mtn, i) => {
         let rank;
+        let order = 0 - mtn.elevation; // smallest number is ordered first
         if (mtn.trailAccessible) {
-          if (i < mountainsSortedByElevation.length * 0.1) {
+          order = order - 1000;
+          if (i < mountainsSortedByElevation.length * 0.05) {
             rank = 1;
-          } else if (i < mountainsSortedByElevation.length * 0.5) {
+          } else if (i < mountainsSortedByElevation.length * 0.1) {
             rank = 2;
-          } else {
+          } else if ((mtn.lists && mtn.lists.length) || i < mountainsSortedByElevation.length * 0.2) {
             rank = 3;
+          } else {
+            rank = 4;
           }
         } else if (mtn.lists && mtn.lists.length) {
-          rank = 3;
-        } else if (i < mountainsSortedByElevation.length * 0.2) {
-          rank = 4;
-        } else {
           rank = 5;
+        } else {
+          rank = 6;
         }
-        const mountainPoint = {...point(mtn.location, {name: mtn.name !== undefined ? mtn.name : '', rank, ele: mtn.elevation, id: mtn._id}), id: mtn._id};
+        if (mtn.lists && mtn.lists.length) {
+          order = order - 500;
+        }
+        const mountainPoint = {...point(mtn.location, {
+          name: mtn.name !== undefined ? mtn.name : '',
+          rank,
+          ele: mtn.elevation,
+          id: mtn._id,
+          order,
+        }), id: mtn._id};
         data.push(mountainPoint);
         if (rank === 1) {
           ranked[0].push(mountainPoint);
@@ -67,6 +79,9 @@ const main = async () => {
         }
         if (rank <= 4) {
           ranked[3].push(mountainPoint);
+        }
+        if (rank <= 5) {
+          ranked[4].push(mountainPoint);
         }
       });
     });

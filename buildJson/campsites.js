@@ -32,18 +32,41 @@ const main = async () => {
     console.log(campsites.length + ' campsites succsefully fetched');
     campsites.forEach((site, i) => {
       let rank;
-      if (site.name && site.ownership === 'federal') {
-        rank = 1;
-      } else if (site.name && site.ownership === 'state') {
-        rank = 2;
-      } else if (site.name && site.ownership === 'private') {
-        rank = 3;
-      } else if (site.name) {
-        rank = 4;
+      let order = 0;
+      if (site.type !== 'camp_pitch') {
+        if (site.name && site.name.length) {
+          order = order - site.name.length;
+        }
+        if (site.name && site.ownership === 'federal') {
+          order = order - 15;
+          rank = 1;
+        } else if (site.name && site.ownership === 'state') {
+          order = order - 15;
+          rank = 2;
+        } else if (site.name && site.ownership === 'private') {
+          order = order - 10;
+          rank = 3;
+        } else if (site.name) {
+          rank = 4;
+        } else {
+          rank = 5;
+        }
       } else {
+        order = order + 15;
         rank = 5;
       }
-      const campsitePoint = {...point(site.location, {name: site.name !== undefined ? site.name : '', type: site.type, rank, id: site._id}), id: site._id};
+      for (let key in site) {
+        if (site[key] !== undefined && site[key] !== null) {
+          order = order - 10;
+        }
+      }
+      const campsitePoint = {...point(site.location, {
+        name: site.name !== undefined ? site.name : '',
+        type: site.type,
+        rank,
+        id: site._id,
+        order,
+      }), id: site._id};
       data.push(campsitePoint);
       if (rank === 1) {
         ranked[0].push(campsitePoint);
