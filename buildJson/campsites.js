@@ -35,7 +35,7 @@ const main = async () => {
       let order = 0;
       if (site.type !== 'camp_pitch') {
         if (site.name && site.name.length) {
-          order = order - site.name.length;
+          order = order - (site.name.length * 10);
         }
         if (site.name && site.ownership === 'federal') {
           order = order - 15;
