@@ -16,8 +16,7 @@
           ]
         ],
         "simplification": [ "case",
-          [ "==", [ "zoom" ], 10 ], 1,
-          [ "==", [ "zoom" ], 11 ], 0,
+          [ "==", [ "zoom" ], 10 ], 0,
           4
         ]
       },
@@ -25,10 +24,7 @@
         "union": [
           {
             "group_by": [ "name", "merge_id" ],
-            "maintain_direction": false,
-            "aggregate": {
-              "id": "comma"
-            }
+            "maintain_direction": false
           }
         ]
       }
@@ -47,21 +43,15 @@
           ]
         ],
         "simplification": [ "case",
-          [ "==", [ "zoom" ], 8 ], 4,
-          [ "==", [ "zoom" ], 10 ], 2,
-          [ "==", [ "zoom" ], 11 ], 1,
-          [ "==", [ "zoom" ], 12 ], 0,
-          5
+          [ "==", [ "zoom" ], 10 ], 0,
+          4
         ]
       },
       "tiles": {
         "union": [
           {
             "group_by": [ "name", "merge_id" ],
-            "maintain_direction": false,
-            "aggregate": {
-              "id": "comma"
-            }
+            "maintain_direction": false
           }
         ]
       }
