@@ -18,7 +18,12 @@
 
 Run the scripts found in the `buildJson` directory to build standard GeoJson files.
 
-Use the [MTS Data Sync CLI](https://github.com/mapbox/mts-data-sync) to create line-delimited GeoJson files for each one. 
+Use the [MTS Data Sync CLI](https://github.com/mapbox/mts-data-sync) to create line-delimited GeoJson files for each one.
+
+```bash
+    # example (if mtsds has already been installed and configured)
+    # mtsds --convert mountains.json
+```
 
 MTS Data Sync can also be used to estimate processing costs.
 
